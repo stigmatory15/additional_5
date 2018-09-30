@@ -3,19 +3,16 @@ module.exports = function check(str, bracketsConfig) {
     array.push(str[0]);
     for (let i = 1; i < str.length; i++) {
         for (let j = 0; j < bracketsConfig.length; j++) {
-            for (let k = i - 1; k >= 0; k--) {
                 if (str[i] == bracketsConfig[j][0]) {
-                    if(bracketsConfig[j][0] == bracketsConfig[j][1] && str[i] == array[k]){
+                    if(bracketsConfig[j][0] == bracketsConfig[j][1] && str[i] == array[array.length - 1]){
                         array.pop();
                     }
-                    array.push(str[i])
+                    array.push(str[i]);
                 }
 
-                if (str[i] == bracketsConfig[j][1] && array[k] == bracketsConfig[j][0]){
+                if (str[i] == bracketsConfig[j][1] && array[array.length - 1] == bracketsConfig[j][0]) {
                     array.pop();
                 }
-
-            }
         }
     }
     if(array.length == 0) return true;
